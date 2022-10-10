@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Edtech Dashboard</title>
+
+<!-- All Library CSS -->
+{% load static %}
+
+<link href=" {% static 'css/bootstrap.min.css ' %}" rel="stylesheet" />
+<link href=" {% static 'css/LineIcons.css ' %}" rel="stylesheet">
+<link href=" {% static 'css/viewer.min.css ' %}" rel="stylesheet">
+<link href=" {% static 'css/icofont.min.css ' %}" rel="stylesheet">
+<link href=" {% static 'css/calendar.css ' %}" rel="stylesheet">
+<link href=" {% static 'css/styles.css ' %}" rel="stylesheet">
+<link href=" {% static 'css/responsive.css ' %}" rel="stylesheet">
+<!-- Favicon -->
+<link rel="shortcut icon" href=" {% static 'favicon.ico ' %}">    <meta name="csrf-param" content="_csrf">
+<meta name="csrf-token" content="XygOqr-6UHNrvS3Vte4vy8qf9-SS6V4cuYGQCqGGNk86enz6-cMEQBz_Ref5r0Sf_PbCovC8bkbaxuVf77d0Pg==">
+</head>
+
+<body>
+    
+    <body>
+        <!-- Preloader -->
+        <!-- Preloader -->
+
+        {% comment %} <div class="preloader">
+    <div class="d-table">
+        <div class="d-tablecell">
+            <span class="loader">
+                <span class="loader-inner"></span>
+            </span>
+        </div>
+    </div>
+</div> {% endcomment %}
+
+        <!-- Top Navbar -->
+		<!-- This conditions used for conditional header rendering like login, signup etc pages not showing the header -->
+					<nav class="navbar navbar-expand fixed-top top-menu">
+    <a class="navbar-brand" href="index.html">
+        <!-- Large logo -->
+        <!-- <img class="large-logo" src="images/large-logo.png">        <!-- Small logo -->
+        <!-- <img class="small-logo" src="images/small-logo.png" alt="Logo">    </a> --> 
+        LOGO HERE
+</a>
+    <!-- Burger menu -->
+    <div class="burger-menu toggle-menu">
+        <span class="top-bar"></span>
+        <span class="middle-bar"></span>
+        <span class="bottom-bar"></span>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    
+        <!-- Search form -->
+        <form class="nav-search-form d-none d-sm-block">
+            <input type="text" class="form-control" placeholder="Search...">
+            <button type="submit" class="search-success">
+                <i data-feather="search" class="icon"></i>
+            </button>
+        </form>
+
+        <!-- Right nav -->
+        <ul class="navbar-nav right-nav ml-auto">
+      
+            <!-- Profile dropdown -->
+            <li class="nav-item dropdown profile-nav-item">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="menu-profile">
+                        <span class="name">
+                            <i data-feather="user" class="icon"></i>
+                            {{request.user}}</span>
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="page/profile.html">
+                        <i data-feather="user" class="icon"></i>
+                        Profile
+                    </a>
+                    <a class="dropdown-item" href="app/inbox.html">
+                        <i data-feather="inbox" class="icon"></i>
+                        Mailbox
+                    </a>
+                    <a class="dropdown-item" href="app/chat.html">
+                        <i data-feather="help-circle" class="icon"></i>
+                        Support
+                    </a>
+                    <a class="dropdown-item" href="page/profile-settings.html">
+                        <i data-feather="settings" class="icon"></i>
+                        Settings
+                    </a>
+                    <a class="dropdown-item" href="{% url 'logout'%}">
+                        <i data-feather="log-out" class="icon"></i>
+                        Logout
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>		
+			<!-- Side Menu -->
+			<div class="sidemenu-area sidemenu-toggle default">
+    <nav class="sidemenu navbar navbar-expand navbar-light hide-nav-title">
+        <div class="navbar-collapse collapse">
+            <div class="navbar-nav">
+        {% if request.user.is_staff %}
+              
+            
+
+                <a class="nav-link" href="{% url 'dash'%}">
+                    <i data-feather="grid" class="icon"></i>
+                    <span class="title">Dashboard</span>
+                </a>
+       
+            
+                <a class="nav-link" href="{% url 'createAssignment'%}">
+                    <i data-feather="file-text" class="icon"></i>
+                    <span class="title">Add Assignment</span>
+                </a>
+                <a class="nav-link" href="{% url 'studentpanel'%}">
+                    <i data-feather="user" class="icon"></i>
+ 
+                    <span class="title">Student Portal</span>
+                </a>
+             
+               
+
+
+        
+        {% else %}
+        <a class="nav-link" href="{% url 'studentpanel'%}">
+            <i data-feather="grid" class="icon"></i>
+            <span class="title">Dashboard</span>
+        </a>
+
+    
+        {% endif %}
+
+            </div>
+        </div>
+    </nav>
+</div>
+			<!-- Main Content Wrapper -->
+			<div class="main-content d-flex flex-column hide-sidemenu">
+						<!-- Main Content Layout -->
+				<!-- Main Content Header -->
+<div class="main-content-header">
+    <h1>Dashboard</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">
+            <span class="active">Project</span>
+        </li>
+    </ol>
+</div>
+<!-- End Main Content Header -->
+
+
+{% block content%}
+
+
+{% endblock%}

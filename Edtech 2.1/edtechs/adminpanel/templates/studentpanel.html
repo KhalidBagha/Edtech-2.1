@@ -1,0 +1,152 @@
+{% extends 'header.html' %}
+
+{%load static%}
+<!-- Stats Card -->
+
+{% block content%}
+
+
+
+<!-- Projects List & Monthly hours Target -->
+<div class="row">
+   <div class="col-lg-12 col-xl-8">
+      
+
+       <div class="container">
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#home">All Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#menu1">Submitted Projects</a>
+          </li>
+        </ul>
+      
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div id="home" class="container tab-pane active"><br>
+            <div class="card mb-30">
+                <div class="card-body">
+                    <div class="card-header">
+                        <a href="#" class="btn btn-primary float-right">View all</a>
+                    </div>
+     
+                    <div class="table-responsive">
+                        <table class="table table-hover text-vertical-middle mb-0">
+                            <thead class="bort-none borpt-0">
+                                <tr>
+                                    <th>Project</th>
+                                    <th>Date</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+     
+                            <tbody>
+
+                                {% for x in assignments%}
+
+                                <tr>
+                                    <td>
+                                        <div class="media align-items-center">
+                                            <strong>{{x.name}}</strong>
+                                        </div>
+                                    </td>
+                                    <td>{{x.date_created}}</td>
+                                    <td>
+
+                                        <a style="color:white" class="btn  btn-primary " href="{% url 'exercises' x.id %}">Go</a>
+                                    </td>
+
+
+                                    {% comment %} <td>
+                                        <span class="badge badge-cyan">
+                                            <span class="fw-600">100%</span>
+                                            <i class="icofont-check-circled"></i>
+                                        </span>
+                                    </td> {% endcomment %}
+                                </tr>
+                                {% endfor%}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>   
+        </div>
+          <div id="menu1" class="container tab-pane fade"><br>
+            <div class="card mb-30">
+                <div class="card-body">
+                    <div class="card-header">
+                        <a href="#" class="btn btn-primary float-right">View all</a>
+                    </div>
+     
+                    <div class="table-responsive">
+                        <table class="table table-hover text-vertical-middle mb-0">
+                            <thead class="bort-none borpt-0">
+                                <tr>
+                                    <th>Project</th>
+                                    <th>Date</th>
+                                    <th>Result</th>
+                                </tr>
+                            </thead>
+     
+                            <tbody>
+                                {% for assignment2 in assignmentss %}
+                                <tr>
+                                    <td>
+                                        <div class="media align-items-center">
+                                            <strong>{{assignment2.assignment.name}}</strong>
+                                        </div>
+                                    </td>
+                                    <td>{{assignment2.date_created}}</td>
+                                    <td>Pending</td>
+
+
+
+
+                                    {% comment %} <td>
+                                        <span class="badge badge-cyan">
+                                            <span class="fw-600">100%</span>
+                                            <i class="icofont-check-circled"></i>
+                                        </span>
+                                    </td> {% endcomment %}
+                                </tr>
+                                {% endfor %}
+                                        </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>   </div>
+          <div id="menu2" class="container tab-pane fade"><br>
+            <h3>Menu 2</h3>
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+          </div>
+        </div>
+      </div>
+      
+   </div>
+
+   <div class="col-lg-12 col-xl-4">
+       <div class="card mb-30">
+           <div class="card-body">
+               <div class="card-header">
+                   <h5 class="card-title">Monthly hours Target</h5>
+               </div>
+               
+               <!-- File path: assets/js/custom-chart.js -->
+               <div id="monthly-hours-target" class="mh-100"></div>
+               <p class="m-0 text-center fw-600">70% of Your Goal</p>
+           </div>
+       </div>
+   </div>
+
+  
+  <!-- Tab panes -->
+ 
+</div>
+
+       
+{% include 'footer.html' %}
+
+{% endblock%}
